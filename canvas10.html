@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    #c {
+        border: 1px solid #ccc;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var canvas = document.getElementById('c');
+        var ctx = canvas.getContext('2d');
+        ctx.textAlign = 'center';
+        ctx.font = 'bolder 32px 宋体';
+        ctx.fillText('一等奖', 150, 75);
+        //canvas.toDataURL('image/png') 返回当前canvas图片的URL
+        var url = canvas.toDataURL('image/png');
+        canvas.style.backgroundImage = 'url(' + url + ')';
+
+
+        ctx.fillStyle = '#ccc';
+        // ctx.globalAlpha = 0.5;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        var flag = false;
+        canvas.onmousedown = function() {
+            flag = true;
+        }
+        canvas.onmouseup = function() {
+            flag = false;
+        }
+        canvas.onmousemove = function(e) {
+            if (flag) {
+                var x = e.clientX;
+                var y = e.clientY;
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.fill();
+            }
+        }
+
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="c"></canvas>
+</body>
+
+</html>

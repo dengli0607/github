@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    #c {
+        border: 1px solid black;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var canvas = document.getElementById("c");
+        var ctx = canvas.getContext('2d');
+        /*ctx.rect(50, 50, 200, 100); ctx.stroke(); ctx.beginPath(); ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.stroke(); ctx.fill();
+         */
+        /*ctx.strokeRect(50, 50, 200, 100);
+        // ctx.fill();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.stroke();*/
+
+        // ctx.fillRect(50, 50, 200, 100);
+        ctx.rect(50, 50, 200, 100);
+        ctx.fill();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fill();
+
+
+
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="c" height="600" width="600">您的浏览器不支持Canvas</canvas>
+</body>
+
+</html>

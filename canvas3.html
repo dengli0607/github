@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document
+    </title>
+    <style type="text/css">
+    #c {
+        border: 1px solid black;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var canvas = document.getElementById("c");
+        canvas.width = 600;
+        canvas.height = 600;
+
+        var ctx = canvas.getContext('2d');
+        ctx.moveTo(0, 300);
+        ctx.lineTo(600, 300);
+        ctx.moveTo(300, 0);
+        ctx.lineTo(300, 600);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.lineWidth = 50;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'bevel';
+        ctx.strokeRect(50, 50, 200, 100);
+        ctx.moveTo(50, 200);
+        ctx.lineTo(300, 300);
+        ctx.lineTo(500, 150);
+        ctx.stroke();
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="c"></canvas>
+</body>
+
+</html>

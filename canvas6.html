@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document
+    </title>
+    <style type="text/css">
+    canvas {
+        border: 1px solid black;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        //获取canvas dom
+        var canvas = document.getElementById("c");
+        canvas.width = 600;
+        canvas.height = 600;
+        //获取画笔
+        var ctx = canvas.getContext("2d");
+        var y = 10;
+        var flag = true;
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.arc(300, y, 10, 0, 2 * Math.PI);
+            ctx.fill();
+
+            if (y == 590) {
+                flag = false;
+            }
+            if (y == 10) {
+                flag = true;
+            }
+
+
+            if (!flag) {
+                y--;
+            } else {
+                y++;
+            }
+        }
+
+        setInterval(draw, 5);
+
+
+
+
+
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="c">您的浏览器不支持Canvas !</canvas>
+</body>
+
+</html>

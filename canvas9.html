@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document
+    </title>
+    <style type="text/css">
+    canvas {
+        border: 1px solid black;
+        /* background-color: red; */
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        //获取canvas dom
+        var canvas = document.getElementById("c");
+        canvas.width = 600;
+        canvas.height = 600;
+        //获取画笔
+        var ctx = canvas.getContext("2d");
+        // alert(ctx.canvas ===  canvas);
+        // 移动画笔到画布上的一个点
+        ctx.arc(300, 300, 200, 0, 2 * Math.PI);
+        // ctx.globalAlpha = 0.5;
+        ctx.fillStyle = 'pink';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(300, 300, 250, 0, 2 * Math.PI);
+        ctx.fillStyle = 'skyBlue';
+        // ctx.globalAlpha = 0.5;
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fill();
+
+    }
+    </script>
+</head>
+
+<body>
+    <!-- <canvas id="c" width="600" height="600">您的浏览器不支持Canvas ! -->
+    <canvas id="c">您的浏览器不支持Canvas !
+    </canvas>
+    <!-- <span style="width: 100px;height: 100px;background-color: green;"></span> -->
+    <!-- <img src="imgs/Penguins.jpg" style="width: 100px;height: 100px;" /> -->
+</body>
+
+</html>

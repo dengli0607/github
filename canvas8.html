@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+    #c {
+        border: 1px solid black;
+        margin-top: 20px;
+    }
+    </style>
+    <title>Document
+    </title>
+    <script type="text/javascript">
+    function draw() {
+        var canvas = document.getElementById("c");
+        var ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.strokeStyle = 'black';
+        ctx.fillStyle = 'black';
+
+        //绘制x轴
+        ctx.moveTo(40, 550);
+        ctx.lineTo(850, 550);
+        ctx.stroke();
+        ctx.moveTo(860, 550);
+        ctx.lineTo(850, 555);
+        ctx.lineTo(850, 545);
+        ctx.closePath();
+        ctx.fill();
+
+        //绘制y轴
+        ctx.beginPath();
+        ctx.moveTo(50, 560);
+        ctx.lineTo(50, 50);
+        ctx.stroke();
+        ctx.moveTo(50, 40);
+        ctx.lineTo(55, 50);
+        ctx.lineTo(45, 50);
+        ctx.closePath();
+        ctx.fill();
+
+        //绘制4等分线 画4条线 单位跨度
+        var yOffset = (canvas.height - 50 * 2) / 4;
+        ctx.strokeStyle = 'gray';
+        for (var i = 0; i < 4; i++) {
+            ctx.beginPath();
+            ctx.moveTo(50, 50 + yOffset * i);
+            ctx.lineTo(850, 50 + yOffset * i);
+            ctx.stroke();
+        }
+
+        /* ctx.beginPath(); ctx.font = '16px 宋体'; ctx.fillText('0', 30, 550);*/
+
+        var productInputs = document.getElementsByName('product');
+        var names = [];
+        var values = [];
+        for (var i = 0; i < productInputs.length; i++) {
+            names.push(productInputs[i].getAttribute('name2'));
+            values[values.length] = productInputs[i].value * 1;
+        }
+        console.debug(names);
+        console.debug(values);
+        var maxValue = 0;
+        for (var i = 0; i < values.length; i++) {
+            if (values[i] > maxValue) {
+                maxValue = values[i];
+            }
+        }
+        console.debug(maxValue);
+        var yUnit = maxValue / 4;
+
+        for (var i = 0; i < 5; i++) {
+            ctx.fillText(yUnit * i, 20, canvas.height - 50 - yOffset * i);
+        }
+
+        var xOffset = (canvas.width - 50 * 2) / names.length;
+        var xUnit = xOffset / 2;
+        ctx.textAlign = 'center';
+        for (var i = 0; i < names.length; i++) {
+            ctx.fillText(names[i], 50 + xUnit + i * xOffset, 570);
+        }
+
+        //单位销售量值所占的像素
+        var pxPerValue = (canvas.height - 50 * 2) / maxValue;
+        //绘制柱子
+        ctx.fillStyle = '#81b5f3';
+        for (var i = 0; i < names.length; i++) {
+            ctx.fillRect(50 + 1 / 4 * xOffset + xOffset * i, canvas.height - 50 - values[i] * pxPerValue, xUnit, values[i] * pxPerValue);
+        }
+    }
+    window.onload = function() {
+        var btn = document.getElementById('btn');
+        btn.onclick = draw;
+        draw();
+    }
+    </script>
+</head>
+
+<body>
+    产品A：
+    <input size='5' name='product' name2='产品A' value='100' /> 产品B：
+    <input size='5' name='product' name2='产品B' value='200' /> 产品C：
+    <input size='5' name='product' name2='产品C' value='300' /> 产品D：
+    <input size='5' name='product' name2='产品D' value='400' /> 产品E：
+    <input size='5' name='product' name2='产品E' value='500' onkeyup="draw();" /> 产品F：
+    <input size='5' name='product' name2='产品F' value='600' onkeyup="draw();" /> 产品G：
+    <input size='5' name='product' name2='产品G' value='600' onkeyup="draw();" />
+    <input type="button" value="绘制" id='btn' />
+    <canvas id="c" height="600" width="900">您的浏览器不支持Canvas</canvas>
+</body>
+
+</html>

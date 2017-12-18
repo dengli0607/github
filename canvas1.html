@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document
+    </title>
+    <style type="text/css">
+    canvas {
+        border: 1px solid black;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        //获取canvas dom
+        var canvas = document.getElementById("c");
+        canvas.width = 600;
+        canvas.height = 600;
+        //获取画笔
+        var ctx = canvas.getContext("2d");
+        // alert(ctx.canvas ===  canvas);
+        // 移动画笔到画布上的一个点
+        ctx.moveTo(50, 50);
+        //提供直线的终点,只是提供了图形的路径，还没有绘制图形
+        ctx.lineTo(300, 300);
+        ctx.lineTo(200, 100);
+        ctx.lineTo(50, 50);
+        ctx.stroke();
+        //弧形工具
+        // ctx.arc(x, y, radius, sAngle, eAngle)
+        // ctx.moveTo(500, 400);
+        ctx.beginPath();
+        ctx.arc(400, 400, 100, 0, 2 * Math.PI, true);
+
+        //绘制
+        ctx.stroke();
+        // ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(500, 50);
+        ctx.lineTo(400, 50);
+        ctx.lineTo(450, 200);
+        // ctx.closePath();
+        // ctx.stroke();
+
+        //矩形工具
+        // ctx.beginPath();
+        ctx.rect(100, 350, 100, 100);
+        // ctx.stroke();
+        ctx.fill();
+    }
+    </script>
+</head>
+
+<body>
+    <!-- <canvas id="c" width="600" height="600">您的浏览器不支持Canvas ! -->
+    <canvas id="c">您的浏览器不支持Canvas !
+    </canvas>
+    <!-- <span style="width: 100px;height: 100px;background-color: green;"></span> -->
+    <!-- <img src="imgs/Penguins.jpg" style="width: 100px;height: 100px;" /> -->
+</body>
+
+</html>

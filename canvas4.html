@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    canvas {
+        border: 1px solid black;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        //获取canvas dom
+        var canvas = document.getElementById("c");
+        canvas.width = 600;
+        canvas.height = 600;
+        //获取画笔
+        var ctx = canvas.getContext("2d");
+        // ctx.arc(300, 300, 200, 0 * Math.PI, 2 * Math.PI);
+
+        // ctx.strokeStyle = 'red';
+        // ctx.strokeStyle = '#00ff00';
+        // ctx.strokeStyle = 'rgba(0,0,255,0.5)';
+        // ctx.lineWidth = 50;
+        /*var lg = ctx.createLinearGradient(0, 0, 600, 600);
+        lg.addColorStop(0, 'red');
+        lg.addColorStop(0.5, 'green
+');
+        lg.addColorStop(1, 'blue');
+        // ctx.strokeStyle = lg;
+        // ctx.stroke();
+        ctx.fillStyle = lg;
+        ctx.fillRect(0, 0, 600, 600);*/
+
+        var rg = ctx.createRadialGradient(300, 300, 0, 300, 300, 100);
+        rg.addColorStop(0, 'red');
+        rg.addColorStop(0.5, 'green');
+        rg.addColorStop(1, 'blue');
+        ctx.fillStyle = rg;
+        ctx.fillRect(200, 200, 200, 200);
+        ctx.arc(300, 300, 100, 0 * Math.PI, 2 * Math.PI);
+        ctx.fill();
+        // ctx.arc(300, 300, 50, 0 * Math.PI, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fillRect(0, 0, 50, 50);
+        /*
+        	超出渐变区域部分，使用开始颜色或结束颜色
+         */
+
+
+
+
+        /*var lg = ctx.createLinearGradient(200, 200, 400, 400); lg.addColorStop(0, 'red'); lg.addColorStop(0.5, 'green'); lg.addColorStop(1, 'blue'); ctx.fillStyle = lg; ctx.fillRect(200, 200, 200, 200);
+         */
+
+
+
+
+
+
+
+
+
+
+
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="c">您的浏览器不支持Canvas !</canvas>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document
+    </title>
+    <style type="text/css">
+    canvas {
+        border: 1px solid black;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        //获取canvas dom
+        var canvas = document.getElementById("c");
+        canvas.width = 600;
+        canvas.height = 600;
+        //获取画笔
+        var ctx = canvas.getContext("2d");
+        ctx.font = '32px bolder 宋体';
+        ctx.textAlign = 'center';
+        ctx.lineWidth = 10;
+        ctx.fillStyle = 'pink';
+        ctx.rect(10, 10, 200, 100);
+        ctx.fill();
+        // ctx.strokeText('Hello World', 50, 50, 30);
+        // ctx.strokeText('你好，Canvas', 100, 100);
+        ctx.fillStyle = 'blue';
+        ctx.fillText('Hello World', 50, 50, 30);
+        ctx.fillText('你好，Canvas', 100, 100);
+
+        /*ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.stroke();*/
+
+
+
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="c">您的浏览器不支持Canvas !</canvas>
+</body>
+
+</html>
